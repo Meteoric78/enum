@@ -1,0 +1,56 @@
+import 'dart:io';
+
+enum Olimpiadas {
+  futebol,
+  ginastica,
+  natacao,
+  atletismo
+}
+
+enum Booleana {
+  falso,
+  verdadeiro
+}
+
+int lerIntseiro() {
+  String? aux = stdin.readLineSync();
+  if (aux != null) {
+    return int.parse(aux);
+  }
+  else return -1;
+}
+
+int lerInteiro({required String mensagem}) {
+  String? input;
+  int? valor;
+  do {
+    print(mensagem);
+    input = stdin.readLineSync();
+    if (input != null) {
+      valor = int.tryParse(input);
+    }
+  } while (input == null || valor == null);
+  return valor;
+}
+
+
+void main(List<String> arguments) {
+  int? op;
+  do {
+    op = lerInteiro(mensagem: "Qual exer");
+    switch (op) {
+      case 1: {
+        int cat = lerInteiro(mensagem: "exer 1");
+        Olimpiadas.values.forEach((e) {
+          if(e.index == cat) {
+            print("A modalidade escolhida é ${e.name}");
+          }
+        });
+      } break;
+      case 2: {
+
+      }
+      default: -1;
+    }
+  } while (op >= 0);
+}
