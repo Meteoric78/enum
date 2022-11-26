@@ -1,16 +1,55 @@
+import 'package:enum1/enum1.dart' as enum1;
+
 import 'dart:io';
 
 enum Olimpiadas {
-  futebol,
-  ginastica,
-  natacao,
-  atletismo
+  Futebol,
+  Ginastica,
+  Natacao,
+  Atletismo
 }
 
 enum Booleana {
   falso,
   verdadeiro
 }
+
+enum Bandas {
+  FooFighters,
+  Titas,
+  Raimundos,
+  Anita,
+  IveteSangalo,
+  IronMaiden,
+  BiquiniCavadao
+}
+
+enum Week {
+  domingo,
+  segunda,
+  terca,
+  quarta,
+  quinta,
+  sexta,
+  sabado
+}
+
+enum Months {
+  janeiro,
+  fevereiro,
+  marco,
+  abril,
+  maio,
+  junho,
+  julho,
+  agosto,
+  setembro,
+  outubro,
+  novembro,
+  dezembro
+}
+
+
 
 int lerIntseiro() {
   String? aux = stdin.readLineSync();
@@ -37,10 +76,11 @@ int lerInteiro({required String mensagem}) {
 void main(List<String> arguments) {
   int? op;
   do {
-    op = lerInteiro(mensagem: "Qual exer");
+    print("");
+    op = lerInteiro(mensagem: "Insira o número do exercício desejado [Encerrar: 0]");
     switch (op) {
       case 1: {
-        int cat = lerInteiro(mensagem: "exer 1");
+        int cat = lerInteiro(mensagem: "Exercício $op");
         Olimpiadas.values.forEach((e) {
           if(e.index == cat) {
             print("A modalidade escolhida é ${e.name}");
@@ -48,9 +88,38 @@ void main(List<String> arguments) {
         });
       } break;
       case 2: {
-
-      }
-      default: -1;
+        int cat = lerInteiro(mensagem: "Exercício $op");
+        Booleana.values.forEach((e) {
+          if(e.index == cat) {
+            print("${e.name}");
+          }
+        });
+      } break;
+      case 3: {
+        print("Exercício $op");
+        var first = Bandas.Titas;
+        print("Na codificação em Dart, [${first.name}] é o item de valor 1");
+      } break;
+      case 4: {
+        print("Exercício $op");
+        print("Uma constante é um valor que não pode ser alterado pelo programa durante a execução, o tipo de dado enumerado é um conjunto de constantes nomeadas");
+      } break;
+      case 5: {
+        print("Exercício $op");
+        print("Dias da semana:");
+        Week.values.forEach((e) {
+          print("Dia ${e.index + 1}: ${e.name}");
+        });
+      } break;
+      case 6: {
+        print("Exercício $op");
+        print("Meses do ano:");
+        Months.values.forEach((e) {
+          print("Mês ${e.index + 1}: ${e.name}");
+        });
+      } break;
+      default: 0;
     }
-  } while (op >= 0);
+  } while (op != 0);
+  print("Fim do programa.");
 }
